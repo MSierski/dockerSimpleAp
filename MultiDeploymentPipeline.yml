@@ -21,6 +21,7 @@ stages:
           latest
 
   - job: BuildDocker_SalesBookWEB
+  
     displayName: Build Docker Image for SalesBook.WEB app
 
     steps:
@@ -33,3 +34,13 @@ stages:
         tags: |
           $(Build.BuildId)
           latest
+
+- stage: DeploytoAKS
+
+  pool:
+    vmImage: ubuntu-latest
+  
+  jobs:
+  - job: DeploytoAKS
+    displayName: Deploy to AKS
+    steps:
